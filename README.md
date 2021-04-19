@@ -1,4 +1,4 @@
-# BERKELEY LIGHTS TAKE-HOME PROJECT
+# DELETE THIS CONTENT
 
 ## Part 1
 I've created a class "Interval" to produce range objects for pen indices. Viewable in solution.py

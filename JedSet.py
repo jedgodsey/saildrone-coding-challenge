@@ -13,7 +13,6 @@ class jed_set:
                 absent = False
         if absent:
             self.entries.append(item)
-            # self.entries += item
             self.size += 1
 
     def remove(self, item):
@@ -37,46 +36,44 @@ class jed_set:
                 verdict = True
         return verdict
 
+    def clear(self):
+        self.entries
+
 
 import unittest
 
-class TestCases(unittest.TestCase):
     #-----------------testing set initialization---------------------------
+
+
+class ListCase(unittest.TestCase):
     def test_string(self):
-        test = jed_set('string')
-        self.assertEqual(test.entries, ['s', 't', 'r', 'i', 'n', 'g'])
-    # def test_list(self):
-    #     test = jed_set(['one', 'two', 'three'])
-    #     self.assertEqual(test.entries, ['one', 'two', 'three'])
-    # def test_tuple(self):
-    #     test = jed_set(('one', 'two', 'three'))
-    #     self.assertEqual(test.entries, ['one', 'two', 'three'])
-    # def test_list_special(self):
-    #     test = jed_set([True, False, None])
-    #     self.assertEqual(test.entries, [True, False, None])
-    # def test_list_int(self):
-    #     test = jed_set([1, 2, 3])
-    #     self.assertEqual(test.entries, [1, 2, 3])
-    # def test_list_list(self):
-    #     test = jed_set([[1], [2], [3]])
-    #     self.assertEqual(test.entries, [[1], [2], [3]])
-    # def test_list_dict(self):
-    #     test = jed_set([{'one': 1}, {'two': 2}, {'three': 3}])
-    #     self.assertEqual(test.entries, [{'one': 1}, {'two': 2}, {'three': 3}])
+        self.assertEqual(jed_set('string').entries, ['s', 't', 'r', 'i', 'n', 'g'])
+    def test_list(self):
+        self.assertEqual(jed_set(['one', 'two', 'three']).entries, ['one', 'two', 'three'])
+    def test_tuple(self):
+        self.assertEqual(jed_set(('one', 'two', 'three')).entries, ['one', 'two', 'three'])
+    def test_list_special(self):
+        self.assertEqual(jed_set([True, False, None]).entries, [True, False, None])
+    def test_list_int(self):
+        self.assertEqual(jed_set([1, 2, 3]).entries, [1, 2, 3])
+    def test_list_list(self):
+        self.assertEqual(jed_set([[1], [2], [3]]).entries, [[1], [2], [3]])
+    def test_list_dict(self):
+        self.assertEqual(jed_set([{'one': 1}, {'two': 2}, {'three': 3}]).entries, [{'one': 1}, {'two': 2}, {'three': 3}])
 
+    #------------------testing set functionality-------------------------
+class MethodCases(unittest.TestCase):
+    def test_methods(self):
+        test = jed_set(['one', 'two', 'three'])
 
-    # #------------------testing set functionality-------------------------
-    # def test_methods(self):
-    #     test = jed_set(['one', 'two', 'three'])
+        test.add('four')
+        self.assertEqual(test.entries, ['one', 'two', 'three', 'four'])
 
-    #     test.add('four')
-    #     self.assertEqual(test.entries, ['one', 'two', 'three', 'four'])
+        test.remove('four')
+        self.assertEqual(test.entries, ['one', 'two', 'three'])
 
-    #     test.remove('four')
-    #     self.assertEqual(test.entries, ['one', 'two', 'three'])
-
-    #     self.assertEqual(test.contains('one'), True)
-    #     self.assertEqual(test.contains('five'), False)
+        self.assertEqual(test.contains('one'), True)
+        self.assertEqual(test.contains('five'), False)
 
 if __name__ == '__main__':
     unittest.main()
